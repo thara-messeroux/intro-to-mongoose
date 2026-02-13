@@ -1,36 +1,81 @@
-## Step 1 – Protecting Sensitive Files with .gitignore
+# Intro to Mongoose
 
-Before pushing our project to GitHub, we created a `.gitignore` file.
+## What we are building
 
-Why?
+A small Node app that connects to MongoDB using Mongoose.
 
-- `node_modules` is very large and automatically installed with `npm install`
-- `.env` contains sensitive data like our MongoDB connection string
+---
 
-The `.gitignore` file tells Git:
+## Step 1: Create a Node project
 
-“Do not track or upload these files.”
+Command used:
 
-This keeps our repository clean, lightweight, and secure.
+npm init -y
 
-## Step 2 – Connecting to MongoDB with dotenv and Mongoose
+What this did:
+- Created a package.json file
+- This file tracks our project and dependencies
 
-We installed:
+---
 
-- mongoose → allows our app to communicate with MongoDB
-- dotenv → allows us to store sensitive data in a .env file
+## Step 2: Install packages
 
-Why use `.env`?
+Command used:
 
-Instead of hardcoding our database password inside our code, we store it in a separate file and access it using:
+npm install mongoose dotenv
 
-process.env.MONGODB_URI
+What these do:
 
-This keeps our credentials secure and professional.
+mongoose  
+→ Lets Node talk to MongoDB  
 
-In `queries.js`, we:
+dotenv  
+→ Lets us store secret data (like passwords) in a .env file  
 
-1. Loaded environment variables using dotenv
-2. Connected to MongoDB using mongoose.connect()
-3. Used async/await to handle the database connection properly
+---
 
+## Step 3: Protect our database password
+
+We created a file called:
+
+.env
+
+Inside it we added:
+
+MONGODB_URI=your_connection_string_here
+
+Why this matters:
+- We never put passwords directly inside our JavaScript files
+- This keeps our database secure
+
+We also added this to .gitignore:
+
+node_modules/
+.env
+
+This prevents GitHub from uploading:
+- installed packages
+- secret credentials
+
+---
+
+## Step 4: Connect to MongoDB
+
+In queries.js we:
+
+- Loaded dotenv
+- Connected using mongoose.connect(process.env.MONGODB_URI)
+- Logged a message when connected
+- Disconnected after running queries
+
+When we ran:
+
+node queries.js
+
+We saw:
+
+Connected to MongoDB  
+Queries running  
+Disconnected from MongoDB  
+
+That confirms the connection works.
