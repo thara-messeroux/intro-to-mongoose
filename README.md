@@ -79,3 +79,18 @@ Queries running
 Disconnected from MongoDB  
 
 That confirms the connection works.
+
+
+## Step 5: Create a Todo Model
+
+We created a models folder and added todo.js.
+
+Inside it we defined a Schema.
+
+A Schema describes what a Todo looks like.
+
+Our Todo has:
+- text (String)
+- isComplete (Boolean)
+
+This allows Mongoose to create and manage Todo documents in MongoDB.
