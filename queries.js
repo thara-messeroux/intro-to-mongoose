@@ -3,6 +3,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
+const Todo = require('./models/todo');
 
 const connect = async () => {
     // Connect to MongoDB using the MONGODB_URI specified in our .env file.
@@ -22,9 +23,19 @@ const connect = async () => {
 };
 
 const runQueries = async () => {
-    console.log('Queries running.')
-    // The functions calls to run queries in our db will go here as we write them.
+    console.log("Creating a todo...");
+
+    const newTodo = await Todo.create({
+        text: "Learn Mongoose",
+        isComplete: false
+    });
+
+    console.log("Saved Todo:");
+    console.log(newTodo);
 };
 
 connect()
+
 /*------------------------------ Query Functions -----------------------------*/
+
+

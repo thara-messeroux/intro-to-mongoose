@@ -1,3 +1,4 @@
+// models/todo.js
 const mongoose = require('mongoose')
 
 const todoSchema = new mongoose.Schema({
@@ -10,3 +11,4 @@ const Todo = mongoose.model('Todo', todoSchema);
 
 // Export the model:
 module.exports = Todo;
+

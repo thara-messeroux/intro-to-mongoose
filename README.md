@@ -94,3 +94,17 @@ Our Todo has:
 - isComplete (Boolean)
 
 This allows Mongoose to create and manage Todo documents in MongoDB.
+
+## Step 6: Create a Todo
+
+We imported the Todo model into queries.js.
+
+We used:
+
+await Todo.create({ text: "Learn Mongoose", isComplete: false })
+
+This created and saved a new document in MongoDB.
+
+When we ran node queries.js, we saw the saved object printed in the terminal.
+
+This confirms data is being stored successfully.
